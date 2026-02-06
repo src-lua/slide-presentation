@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test TikZ API</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    #result { margin: 20px 0; padding: 20px; border: 2px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Teste da API TikZ</h1>
+  <p>Testando se a API /api/tikz está funcionando...</p>
+  <div id="result">Carregando...</div>
+
+  <script>
+    fetch('/api/tikz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        code: '\\begin{tikzpicture}\\draw (0,0) circle (1cm);\\end{tikzpicture}',
+        libraries: []
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      const resultDiv = document.getElementById('result');
+      if (data.svg) {
+        resultDiv.innerHTML = '<h2>✅ Sucesso!</h2>' + data.svg;
+      } else {
+        resultDiv.innerHTML = '<h2>❌ Erro:</h2><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+      }
+    })
+    .catch(err => {
+      document.getElementById('result').innerHTML = '<h2>❌ Erro de rede:</h2><pre>' + err + '</pre>';
+    });
+  </script>
+</body>
+</html>

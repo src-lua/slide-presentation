@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste TikZJax</title>
+    <link rel="stylesheet" href="/tikz/fonts.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-container {
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9f9f9;
+        }
+        .loading {
+            color: #2196F3;
+            font-weight: bold;
+        }
+        .error {
+            color: #f44336;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste de TikZJax</h1>
+    <p>Esta página testa se o TikZJax está funcionando corretamente.</p>
+
+    <div class="test-container">
+        <h2>Teste 1: Círculo Simples</h2>
+        <div id="test1">
+            <p class="loading">Carregando...</p>
+            <script type="text/tikz">
+                \begin{tikzpicture}
+                \draw (0,0) circle (1in);
+                \end{tikzpicture}
+            </script>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>Teste 2: Diagrama com Cores</h2>
+        <div id="test2">
+            <p class="loading">Carregando...</p>
+            <script type="text/tikz" data-tikz-libraries="arrows.meta,calc">
+                \begin{tikzpicture}
+                \draw[thick,->] (0,0) -- (4,0) node[right] {$x$};
+                \draw[thick,->] (0,0) -- (0,3) node[above] {$y$};
+                \draw[red,thick] (0,0) -- (3,2);
+                \end{tikzpicture}
+            </script>
+        </div>
+    </div>
+
+    <div id="console-output">
+        <h2>Log de Debug:</h2>
+        <pre id="log" style="background: #333; color: #0f0; padding: 10px; border-radius: 4px; overflow-x: auto;"></pre>
+    </div>
+
+    <!-- Carrega a inicialização ANTES do TikZJax -->
+    <script src="/tikz-init.js"></script>
+    <script src="/tikz/tikzjax.js"></script>
+    <script>
+        const log = document.getElementById('log');
+        const originalLog = console.log;
+        const originalError = console.error;
+
+        function addLog(type, ...args) {
+            const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)).join(' ');
+            log.textContent += `[${type}] ${msg}\n`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog('LOG', ...args);
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLog('ERROR', ...args);
+        };
+
+        console.log('Iniciando teste TikZJax...');
+        console.log('window.tikzjax:', window.tikzjax ? 'Carregado' : 'Não carregado');
+
+        // Aguarda o carregamento
+        setTimeout(() => {
+            console.log('Após 1s - window.tikzjax:', window.tikzjax ? 'Carregado' : 'Não carregado');
+
+            if (window.tikzjax) {
+                console.log('TikZJax disponível! Processando elementos...');
+
+                // Remove mensagens de loading
+                document.querySelectorAll('.loading').forEach(el => el.remove());
+            } else {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.textContent = 'ERRO: TikZJax não carregou após 1 segundo. Verifique o console do navegador (F12).';
+                document.body.insertBefore(errorDiv, document.body.firstChild);
+            }
+        }, 1000);
+
+        // Listener para eventos do TikZJax
+        document.addEventListener('tikzjax-load-finished', (e) => {
+            console.log('SVG gerado com sucesso!', e.target);
+        });
+
+        document.addEventListener('tikzjax-error', (e) => {
+            console.error('Erro TikZJax:', e.detail);
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = 'Erro na compilação: ' + (e.detail ? e.detail.message : 'Desconhecido');
+            document.body.insertBefore(errorDiv, document.body.firstChild);
+        });
+    </script>
+</body>
+</html>

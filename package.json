@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "slidev-addon-tikzjax": "^0.1.0"
+  }
+}

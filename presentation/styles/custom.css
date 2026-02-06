@@ -1,0 +1,162 @@
+Custom Styles for Segment Tree Presentation
+
+/* Import JetBrains Mono font */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Root variables for colors matching the original presentation */
+:root {
+  --annotation-red: #DB1E2F;
+  --slidev-code-font-family: 'JetBrains Mono', monospace;
+}
+
+/* Code blocks styling */
+.slidev-code {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Annotation box styling (for red callouts) */
+.annotation-box {
+  background: var(--annotation-red);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom bullet styling */
+.slidev-layout ul {
+  list-style-type: disc;
+}
+
+.slidev-layout ul ul {
+  list-style-type: circle;
+}
+
+/* Math formula styling */
+.katex {
+  font-size: 0.5em !important;
+}
+
+.katex-display > .katex {
+  font-size: 0.7em !important;
+}
+
+/* Two column layout improvements */
+.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Code blocks side by side */
+.grid.grid-cols-2 {
+  gap: 1.5rem;
+}
+
+.grid.grid-cols-2 pre {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Improve readability for Portuguese content */
+body {
+  font-feature-settings: "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Dark theme support */
+.dark .annotation-box {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Highlight important text */
+.highlight {
+  background: var(--annotation-red);
+  color: white;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Center align math in paragraphs */
+p .katex-display {
+  margin: 1rem 0;
+}
+
+/* Custom arrow styling for connecting diagrams */
+.arrow-right {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid var(--annotation-red);
+  margin: 0 10px;
+}
+
+/* Image captions */
+.image-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Slide numbers and metadata */
+.slidev-layout .abs-br {
+  opacity: 0.8;
+}
+
+/* Better spacing for nested lists */
+ul ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Code highlighting colors adjustments */
+.shiki {
+  background-color: #1e1e1e !important;
+}
+
+/* Responsive font sizing for code */
+@media (max-width: 768px) {
+  .grid.grid-cols-2 pre {
+    font-size: 0.65rem;
+  }
+}
+
+/* Title slide customization */
+.slidev-layout.cover h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.slidev-layout.cover h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+.slidev-layout pre {
+  /* 1. Fundo cinza "gelo" (um pouco mais escuro que o branco) */
+  background-color: #f1f5f9 !important; 
+  
+  /* 2. Borda sutil para delimitar a caixinha */
+  border: 1px solid #e2e8f0;
+  
+  /* 3. Sombra leve para dar profundidade (pop-out) */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* Ajustes de espaçamento e arredondamento */
+  border-radius: 8px;
+  padding: 1em 1.5em !important; /* Espaço interno confortável */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
