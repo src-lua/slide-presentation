@@ -13,3 +13,5 @@ yarn-error.log*
 !.vscode/extensions.json
 dist/
 build/
+# TikZ build-time cache (remover se quiser commitar o cache para CI mais rápido)
+.tikz-cache/

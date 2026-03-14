@@ -1,292 +1,133 @@
 ---
 layout: default
-clicks: 6
+clicks: 2
 ---
 
 <script setup>
-import TikzFade from '../components/TikzFade.vue'
-import TikzServerSide from '../components/TikzServerSide.vue'
+import TikzMorph from '../components/TikzMorph.vue'
 </script>
 
 <LogoBar variant="black" position="header" align="right" />
 
-# SegTree Walk (Max)
-<br>Query: Primeiro índice com val $\ge$ 10
+# Seg Lazy
 
-<div class="array-table absolute top-20 right-4 scale-100 origin-top-right z-50">
+<br> Query de $[0, 1]$ com lazy pendente no nó $[0,3]$
 
-| 2 | 3 | 1 | 5 | 9 | 10 | -20 | 22 |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-</div>
+<TikzMorph>
+  <template #0>
 
-<TikzFade :clicks="$clicks">
-  <template #base>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
   level 2/.style={sibling distance=3.5cm},
   level 3/.style={sibling distance=1.8cm},
-  every node/.style={circle, draw=black, thick, minimum size=0.9cm, font=\small}
+  every node/.style={circle, draw=black, thick, minimum size=1.1cm, font=\small, align=center},
+  interval/.style={label={[draw=none, rectangle, text=gray, yshift=-0.2cm]90:{\footnotesize #1}}},
+  lazed/.style={fill=red!20, draw=red!60!black, thick}
 ]
-  \node[] {22}
-    child { node[] {5}
-      child { node[] {3}
-        child { node[] {2} }
-        child { node[] {3} }
+  \node[interval={[0,7]}] {20}
+    child { node[interval={[0,3]}, lazed] {20 \\ \color{red!60!black}\textbf{+5}}
+      child { node[interval={[0,1]}] {0}
+        child { node[interval={[0,0]}] {0} }
+        child { node[interval={[1,1]}] {0} }
       }
-      child { node[] {5}
-        child { node[] {1} }
-        child { node[] {5} }
+      child { node[interval={[2,3]}] {0}
+        child { node[interval={[2,2]}] {0} }
+        child { node[interval={[3,3]}] {0} }
       }
     }
-    child { node[] {22}
-      child { node[] {10}
-        child { node[] {9} }
-        child { node[] {10} }
+    child { node[interval={[4,7]}] {0}
+      child { node[interval={[4,5]}] {0}
+        child { node[interval={[4,4]}] {0} }
+        child { node[interval={[5,5]}] {0} }
       }
-      child { node[] {22}
-        child { node[] {-20} }
-        child { node[] {22} }
+      child { node[interval={[6,7]}] {0}
+        child { node[interval={[6,6]}] {0} }
+        child { node[interval={[7,7]}] {0} }
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-1>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #1>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
   level 2/.style={sibling distance=3.5cm},
   level 3/.style={sibling distance=1.8cm},
-  every node/.style={circle, draw=black, thick, minimum size=0.9cm, font=\small},
-  pathnode/.style={fill=orange!30, draw=orange!80!black, thick},
-  target/.style={fill=green!30, draw=green!80!black, double},
-  reject/.style={fill=red!10, draw=red!40, dashed}
+  every node/.style={circle, draw=black, thick, minimum size=1.1cm, font=\small, align=center},
+  interval/.style={label={[draw=none, rectangle, text=gray, yshift=-0.2cm]90:{\footnotesize #1}}},
+  processed/.style={fill=yellow!20},
+  lazed/.style={fill=red!20, draw=red!60!black, thick}
 ]
-  \node[pathnode] {22}
-    child { node[] {5}
-      child { node[] {3}
-        child { node[] {2} }
-        child { node[] {3} }
+  \node[interval={[0,7]}, processed] {20}
+    child { node[interval={[0,3]}, processed] {20}
+      child { node[interval={[0,1]}, lazed] {10 \\ \color{red!60!black}\textbf{+5}}
+        child { node[interval={[0,0]}] {0} }
+        child { node[interval={[1,1]}] {0} }
       }
-      child { node[] {5}
-        child { node[] {1} }
-        child { node[] {5} }
+      child { node[interval={[2,3]}, lazed] {10 \\ \color{red!60!black}\textbf{+5}}
+        child { node[interval={[2,2]}] {0} }
+        child { node[interval={[3,3]}] {0} }
       }
     }
-    child { node[] {22}
-      child { node[] {10}
-        child { node[] {9} }
-        child { node[] {10} }
+    child { node[interval={[4,7]}] {0}
+      child { node[interval={[4,5]}] {0}
+        child { node[interval={[4,4]}] {0} }
+        child { node[interval={[5,5]}] {0} }
       }
-      child { node[] {22}
-        child { node[] {-20} }
-        child { node[] {22} }
+      child { node[interval={[6,7]}] {0}
+        child { node[interval={[6,6]}] {0} }
+        child { node[interval={[7,7]}] {0} }
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-2>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #2>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
   level 2/.style={sibling distance=3.5cm},
   level 3/.style={sibling distance=1.8cm},
-  every node/.style={circle, draw=black, thick, minimum size=0.9cm, font=\small},
-  pathnode/.style={fill=orange!30, draw=orange!80!black, thick},
-  target/.style={fill=green!30, draw=green!80!black, double},
-  reject/.style={fill=red!10, draw=red!40, dashed}
+  every node/.style={circle, draw=black, thick, minimum size=1.1cm, font=\small, align=center},
+  interval/.style={label={[draw=none, rectangle, text=gray, yshift=-0.2cm]90:{\footnotesize #1}}},
+  processed/.style={fill=yellow!20},
+  lazed/.style={fill=red!20, draw=red!60!black, thick},
+  pushed/.style={fill=green!20, draw=green!60!black, thick}
 ]
-  \node[pathnode] {22}
-    child { node[reject] {5}
-      child { node[] {3}
-        child { node[] {2} }
-        child { node[] {3} }
+  \node[interval={[0,7]}, processed] {20}
+    child { node[interval={[0,3]}, processed] {20}
+      child { node[interval={[0,1]}, pushed] {10}
+        child { node[interval={[0,0]}, lazed] {5 \\ \color{red!60!black}\textbf{+5}} }
+        child { node[interval={[1,1]}, lazed] {5 \\ \color{red!60!black}\textbf{+5}} }
       }
-      child { node[] {5}
-        child { node[] {1} }
-        child { node[] {5} }
+      child { node[interval={[2,3]}, lazed] {10 \\ \color{red!60!black}\textbf{+5}}
+        child { node[interval={[2,2]}] {0} }
+        child { node[interval={[3,3]}] {0} }
       }
     }
-    child { node[] {22}
-      child { node[] {10}
-        child { node[] {9} }
-        child { node[] {10} }
+    child { node[interval={[4,7]}] {0}
+      child { node[interval={[4,5]}] {0}
+        child { node[interval={[4,4]}] {0} }
+        child { node[interval={[5,5]}] {0} }
       }
-      child { node[] {22}
-        child { node[] {-20} }
-        child { node[] {22} }
+      child { node[interval={[6,7]}] {0}
+        child { node[interval={[6,6]}] {0} }
+        child { node[interval={[7,7]}] {0} }
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
-  </template>
+```
 
-  <template #click-3>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
-\begin{tikzpicture}[
-  level distance=1.5cm,
-  level 1/.style={sibling distance=7cm},
-  level 2/.style={sibling distance=3.5cm},
-  level 3/.style={sibling distance=1.8cm},
-  every node/.style={circle, draw=black, thick, minimum size=0.9cm, font=\small},
-  pathnode/.style={fill=orange!30, draw=orange!80!black, thick},
-  target/.style={fill=green!30, draw=green!80!black, double},
-  reject/.style={fill=red!10, draw=red!40, dashed}
-]
-  \node[pathnode] {22}
-    child { node[reject] {5}
-      child { node[] {3}
-        child { node[] {2} }
-        child { node[] {3} }
-      }
-      child { node[] {5}
-        child { node[] {1} }
-        child { node[] {5} }
-      }
-    }
-    child { node[pathnode] {22}
-      child { node[] {10}
-        child { node[] {9} }
-        child { node[] {10} }
-      }
-      child { node[] {22}
-        child { node[] {-20} }
-        child { node[] {22} }
-      }
-    };
-\end{tikzpicture}
-      </div>
-    </TikzServerSide>
   </template>
-
-  <template #click-4>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
-\begin{tikzpicture}[
-  level distance=1.5cm,
-  level 1/.style={sibling distance=7cm},
-  level 2/.style={sibling distance=3.5cm},
-  level 3/.style={sibling distance=1.8cm},
-  every node/.style={circle, draw=black, thick, minimum size=0.9cm, font=\small},
-  pathnode/.style={fill=orange!30, draw=orange!80!black, thick},
-  target/.style={fill=green!30, draw=green!80!black, double},
-  reject/.style={fill=red!10, draw=red!40, dashed}
-]
-  \node[pathnode] {22}
-    child { node[reject] {5}
-      child { node[] {3}
-        child { node[] {2} }
-        child { node[] {3} }
-      }
-      child { node[] {5}
-        child { node[] {1} }
-        child { node[] {5} }
-      }
-    }
-    child { node[pathnode] {22}
-      child { node[pathnode] {10}
-        child { node[] {9} }
-        child { node[] {10} }
-      }
-      child { node[] {22}
-        child { node[] {-20} }
-        child { node[] {22} }
-      }
-    };
-\end{tikzpicture}
-      </div>
-    </TikzServerSide>
-  </template>
-
-  <template #click-5>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
-\begin{tikzpicture}[
-  level distance=1.5cm,
-  level 1/.style={sibling distance=7cm},
-  level 2/.style={sibling distance=3.5cm},
-  level 3/.style={sibling distance=1.8cm},
-  every node/.style={circle, draw=black, thick, minimum size=0.9cm, font=\small},
-  pathnode/.style={fill=orange!30, draw=orange!80!black, thick},
-  target/.style={fill=green!30, draw=green!80!black, double},
-  reject/.style={fill=red!10, draw=red!40, dashed}
-]
-  \node[pathnode] {22}
-    child { node[reject] {5}
-      child { node[] {3}
-        child { node[] {2} }
-        child { node[] {3} }
-      }
-      child { node[] {5}
-        child { node[] {1} }
-        child { node[] {5} }
-      }
-    }
-    child { node[pathnode] {22}
-      child { node[pathnode] {10}
-        child { node[reject] {9} }
-        child { node[] {10} }
-      }
-      child { node[] {22}
-        child { node[] {-20} }
-        child { node[] {22} }
-      }
-    };
-\end{tikzpicture}
-      </div>
-    </TikzServerSide>
-  </template>
-
-  <template #click-6>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
-\begin{tikzpicture}[
-  level distance=1.5cm,
-  level 1/.style={sibling distance=7cm},
-  level 2/.style={sibling distance=3.5cm},
-  level 3/.style={sibling distance=1.8cm},
-  every node/.style={circle, draw=black, thick, minimum size=0.9cm, font=\small},
-  pathnode/.style={fill=orange!30, draw=orange!80!black, thick},
-  target/.style={fill=green!30, draw=green!80!black, double},
-  reject/.style={fill=red!10, draw=red!40, dashed}
-]
-  \node[pathnode] {22}
-    child { node[reject] {5}
-      child { node[] {3}
-        child { node[] {2} }
-        child { node[] {3} }
-      }
-      child { node[] {5}
-        child { node[] {1} }
-        child { node[] {5} }
-      }
-    }
-    child { node[pathnode] {22}
-      child { node[pathnode] {10}
-        child { node[reject] {9} }
-        child { node[target] {10} }
-      }
-      child { node[] {22}
-        child { node[] {-20} }
-        child { node[] {22} }
-      }
-    };
-\end{tikzpicture}
-      </div>
-    </TikzServerSide>
-  </template>
-</TikzFade>
+</TikzMorph>

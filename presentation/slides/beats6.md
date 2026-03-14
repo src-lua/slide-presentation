@@ -4,17 +4,16 @@ clicks: 3
 ---
 
 <script setup>
-import TikzFade from '../components/TikzFade.vue'
-import TikzServerSide from '../components/TikzServerSide.vue'
+import TikzMorph from '../components/TikzMorph.vue'
 </script>
 
 <LogoBar variant="black" position="header" align="right" />
 
 # Prova de Complexidade
-<TikzFade :clicks="$clicks" style="scale: 0.65;">
-  <template #base>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+<TikzMorph :scale="0.65">
+  <template #0>
+
+```tikz
 \begin{tikzpicture}[
   level distance=2cm,
   level 1/.style={sibling distance=14cm},
@@ -77,13 +76,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
     \node[invisible, minimum size=0.6cm, label={[invisible]right:\textbf{Não-Terminal}}] at (3.5, 0) {};
   \end{scope}
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-1>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #1>
+
+```tikz
 \begin{tikzpicture}[
   level distance=2cm,
   level 1/.style={sibling distance=14cm},
@@ -147,13 +146,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
     \node[invisible, minimum size=0.6cm, label={[invisible]right:\textbf{Não-Terminal}}] at (3.5, 0) {};
   \end{scope}
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-2>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #2>
+
+```tikz
 \begin{tikzpicture}[
   level distance=2cm,
   level 1/.style={sibling distance=14cm},
@@ -219,13 +218,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
     \node[invisible, minimum size=0.6cm, label={[invisible]right:\textbf{Não Terminal}}] at (3.5, 0) {};
   \end{scope}
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-3>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #3>
+
+```tikz
 \begin{tikzpicture}[
   level distance=2cm,
   level 1/.style={sibling distance=14cm},
@@ -290,8 +289,8 @@ import TikzServerSide from '../components/TikzServerSide.vue'
     \node[additional, minimum size=0.6cm, label={[]right:\textbf{Não Terminal}}] at (3.5, 0) {};
   \end{scope}
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-</TikzFade>
+</TikzMorph>

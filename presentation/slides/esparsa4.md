@@ -4,8 +4,7 @@ clicks: 5
 ---
 
 <script setup>
-import TikzFade from '../components/TikzFade.vue'
-import TikzServerSide from '../components/TikzServerSide.vue'
+import TikzMorph from '../components/TikzMorph.vue'
 </script>
 
 <LogoBar variant="black" position="header" align="right" />
@@ -13,10 +12,10 @@ import TikzServerSide from '../components/TikzServerSide.vue'
 # SegTree Esparsa
 
 
-<TikzFade :clicks="$clicks">
-  <template #base>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+<TikzMorph>
+  <template #0>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
@@ -50,12 +49,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
-  <template #click-1>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+
+  <template #1>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
@@ -89,13 +89,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-2>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #2>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
@@ -131,13 +131,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-3>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #3>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
@@ -173,13 +173,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-4>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #4>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
@@ -216,13 +216,13 @@ import TikzServerSide from '../components/TikzServerSide.vue'
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-  <template #click-5>
-    <TikzServerSide scale="1.6" style="transform: translate(0px, -75px);">
-      <div v-pre>
+  <template #5>
+
+```tikz
 \begin{tikzpicture}[
   level distance=1.5cm,
   level 1/.style={sibling distance=7cm},
@@ -260,8 +260,8 @@ import TikzServerSide from '../components/TikzServerSide.vue'
       }
     };
 \end{tikzpicture}
-      </div>
-    </TikzServerSide>
+```
+
   </template>
 
-</TikzFade>
+</TikzMorph>
