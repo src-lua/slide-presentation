@@ -6,9 +6,9 @@ layout: two-cols
 
 # Prova de Complexidade
 
-Para calcular $\Phi_+$, podemos usar do fato de que, em cada atualização, sabemos que $old_value \geq 0$ e que $new_value \le C$. Logo, o potencial adicional de cada elemento é no máximo $\log (C + 1) - \log (0 + 1) = \log C$.
+Para calcular $\Phi_+$, podemos usar do fato de que, em cada atualização, sabemos que $oldValue \geq 0$ e que $newValue \le C$. Logo, o potencial adicional de cada elemento é no máximo $\log (C + 1) - \log (0 + 1) = \log C$.
 
-Sendo assim, como temos $\mathcal{O}(q)$ updates e cada update influencia em no máximo $\mathcal{O}(\log n)$ nós, temos que $\Phi_+ \leq \mathcal{O}(q \log n \log C)$.
+Sendo assim, como temos $\mathcal{O}(q)$ updates e cada update influencia em no máximo $\mathcal{O}(\log n)$ nós, temos $\Phi_+ \leq \mathcal{O}(q \log n \log C)$.
 
 ::right::
 

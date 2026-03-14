@@ -11,3 +11,9 @@ Nota: Lazy Propagation em SegTree Persistente é possível, mas exige criar novo
 ::right::
 
 Caso tenha interesse, assista a aula do primeiro dia da SummerCamp 2026 da turma World Finals!
+
+&nbsp;
+
+<div class="flex justify-center">
+  <Youtube id="amvwrZXt5kA?start=1802" width="352" height="198" />
+</div>

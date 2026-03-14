@@ -5,7 +5,7 @@ layout: default
 
 
 # Soma em Range
-<br>**Update:** Somar x em [L, R] | **Query:** Soma de [L, R]
+<br>**Update:** Somar $x$ em $[L, R]$ | **Query:** Soma de $[L, R]$
 
 <div style="--slidev-code-font-size: 0.58em; transform: translateY(0px);">
 

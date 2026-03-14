@@ -16,7 +16,6 @@ Por conta disso, a TAG guanha mais uma responsabilidade:
 <li> Guardar o update pendente </li>
 <li> Saber se unir com outra tag </li>
 
-O node da SegLazy precisa saber aplicar a tag em range.
 </div>
 
 <div style="--slidev-code-font-size: 0.5em; transform: translateY(20px);">

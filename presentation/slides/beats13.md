@@ -6,14 +6,14 @@ layout: two-cols
 
 # Prova de Complexidade
 
-Vamos definir $\phi(v)$ o potencial de um nó e o potencial da árvore:
+Vamos definir $\phi(v)$ o potencial de um nó e $\Phi$ o potencial da árvore:
 
 $$ \phi(v) = \text{número de elementos distintos em } [L_v, R_v] $$
-$$0 \leq \Phi(v) = \sum_{} \phi(v) \leq \mathcal{O}(n \log n)$$
+$$0 \leq \Phi = \sum_{} \phi(v) \leq \mathcal{O}(n \log n)$$
 
 <div class="-mt-6 text-[0.7em] !leading-[1.2em] italic">
 
-A desigualdade vale pois cada intervalo contribui com no máximo $\log n$ para o potencial da árvore, já que a árvore tem altura $\log n$ e cada elemento pode ser contado no máximo uma vez por nível.
+A desigualdade vale pois cada um dos $n$ elementos é contabilizado no pontecial de, no máximo, $\mathcal{O}(\log n)$ nós (os seus ancetrais).
 
 </div>
 

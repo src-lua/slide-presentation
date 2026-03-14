@@ -17,7 +17,7 @@ layout: two-cols
 Em vez de quebrar o intervalo em vários nós, traçamos um caminho único:
 - Começamos na Raiz.
 - Verificamos o Filho da Esquerda:
-- A resposta pode estar lá? (ex: $max(left) \geq x$)
+- A resposta pode estar lá?   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (ex: $max(left) \geq x$)
   - Sim: Descemos para a Esquerda.
   - Não: Descemos para a Direita.
 - Repetimos até chegar numa Folha.

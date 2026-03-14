@@ -17,4 +17,4 @@ Portanto, em vez de copiar tudo, reaproveitamos os nós que não mudaram.
 - Os novos nós apontam para os filhos "velhos" quando o caminho não segue por lá.
 
 É essencialmente uma SegTree Dinâmica onde nunca deletamos nós.
-Temos um array de raízes: $roots[k]$ aponta para a raiz da árvore no tempo k.
+Temos um array de raízes: $roots[k]$ aponta para a raiz da árvore no tempo $k$.

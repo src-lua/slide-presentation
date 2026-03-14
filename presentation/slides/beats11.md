@@ -12,6 +12,6 @@ No geral, a prova de complexidade para qualquer operação de Seg Beats é simil
 ::right::
 
 Em especial, existem mais 3 operações "famosas" de seg beats:
-- chmin ($A_i​=min(Ai_​,x)$) ("Ji Driver Segmment Tree")
+- chmin ($A_i​=min(A_i​,x)$) ("Ji Driver Segmment Tree")
 - chmin, chmax and add ("Extended Ji Driver Segment Tree")
 - chmin and/or add update with gcd query (não veremos, mas não é difícil de chegar)

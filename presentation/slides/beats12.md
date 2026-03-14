@@ -12,7 +12,7 @@ Queries que queremos suportar:
 <br>Sendo assim, podemos definir:
 
 - Break Condition: $max[v] <= x$
-- Tag Condition: $second_max[v] < x <max[v]$
+- Tag Condition: $secondMax[v] < x <max[v]$
 
 ::right::
 

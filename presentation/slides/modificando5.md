@@ -4,7 +4,7 @@ layout: default
 <LogoBar variant="black" position="header" align="right" />
 
 # Soma e produto
-<br>**Update:** Multiplicar por M e Somar A em [L, R] | **Query:** Soma de [L, R] (Com módulo)
+<br>**Update:** Multiplicar por $M$ e Somar $A$ em $[L, R]$ | **Query:** Soma de $[L, R]$ (Com módulo)
 
 <div style="--slidev-code-font-size: 0.58em; transform: translateY(0px);">
 

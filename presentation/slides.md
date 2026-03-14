@@ -309,6 +309,10 @@ src: ./slides/duvidas.md
 ---
 
 ---
+src: ./slides/duvidas_upsolving.md
+---
+
+---
 src: ./slides/creditos.md
 ---
 

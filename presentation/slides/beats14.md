@@ -16,7 +16,7 @@ Portanto, a complexidade total do algoritmo é:
 
 ::right::
 
-Note que, de forma análoga, podemos suportar a operação de chmax ($A_i​=max(Ai_​,x)$). 
+Note que, de forma análoga, podemos suportar a operação de chmax ($A_i​=max(A_i​,x)$). 
 
 Inclusive, é possível suportar ambas as operações simultaneamente guardando o máximo, 2º máximo, o mínimo, 2º mínimo, a quantidade de máximos e a quantidade de mínimos para cada intervalo.
 

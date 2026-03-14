@@ -14,4 +14,4 @@ Para os nós simples, a árvore teria que descer de qualquer forma, logo, eles t
 
 Vamos mostrar que, ao visitar um nó não-terminal, o potencial da árvore diminui em pelo menos 1. Sendo assim, eles contribuem com $\mathcal{O}(n \log n \log c) + \Phi_+$ onde $\Phi_+$ é o potencial adicional da árvore (vamos falar mais sobre posteriormente).
 
-Definindo dessa forma, a complexidade total de descidas seria $\mathcal{O}(n \log n \log C + \Phi_+ q \log n)$. Portanto, para provar que o algoritmo está em $\mathcal{O}((n+q) \log n \log C)$, precisamos mostrar que $\Phi_+ \in \mathcal{O}((n+q) \log n \log C)$.
+Definindo dessa forma, a complexidade total de descidas seria $\mathcal{O}(n \log n \log C + \Phi_+ + q \log n)$. Portanto, para provar que o algoritmo está em $\mathcal{O}((n+q) \log n \log C)$, precisamos mostrar que $\Phi_+ \in \mathcal{O}((n+q) \log n \log C)$.

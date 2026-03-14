@@ -6,7 +6,7 @@ layout: two-cols
 # SegTree Persistente
 
 Por vezes, queremos realizar queries em uma versão anterior da estrutura de dados. 
-- Exemplo: "Qual era a soma no range $[L,R]$ logo após o K-ésimo update?"
+- Exemplo: "Qual era a soma no range $[L,R]$ logo após o $k$-ésimo update?"
 
 A Abordagem Ingênua: Clonar a árvore inteira a cada update.
 
@@ -16,6 +16,6 @@ Guardamos um array de SegTrees: vector\<SegTree\> versions;
 
 O Gargalo:
 - Tempo: $\mathcal{O}(N \cdot Q )$ para copiar tudo a cada update.
-- Memória: $\mathcal{O}(N \cdot Q)$. Se $N=10^5$ e $Q=10^5$, precisamos de $10^{10}$ posições. Explode a memória!
+- Memória: $\mathcal{O}(N \cdot Q)$. Se $N=10^5$ e &nbsp;&nbsp; $Q=10^5$, precisamos de $10^{10}$ posições. Explode a memória!
 
 
