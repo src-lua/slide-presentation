@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useSlots, computed } from 'vue'
-import { useNav } from '@slidev/client'
+import { useSlideContext } from '@slidev/client'
 
 const props = defineProps<{
   scale?: number | string
 }>()
 
-const { clicks } = useNav()
+const { $clicks: clicks } = useSlideContext()
 const slots = useSlots()
 
 // Coleta e ordena os slots numéricos: #0, #1, #2, ...

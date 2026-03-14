@@ -11,6 +11,7 @@ import TikzMorph from '../components/TikzMorph.vue'
 
 # SegTree Persistente
 
+<div style="transform: scale(1.12); margin-top: 0px;">
 <TikzMorph>
   <template #0>
 
@@ -334,3 +335,4 @@ import TikzMorph from '../components/TikzMorph.vue'
 
   </template>
 </TikzMorph>
+</div>

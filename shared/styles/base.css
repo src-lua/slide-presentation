@@ -1,0 +1,300 @@
+/* Base styles for all presentations */
+@import './fonts.css';
+
+/* ── Variables ───────────────────────────────────────────────────────────── */
+:root {
+  --primary: #DB1E2F;
+  --annotation-red: #DB1E2F;
+  --dark: #1e1e1e;
+  --light: #f5f5f5;
+
+  --slidev-theme-primary: var(--primary);
+  --slidev-code-font-size: 0.65em;
+  --slidev-code-font-family: 'JetBrains Mono', monospace;
+
+  font-size: 19px;
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--dark);
+  font-feature-settings: "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+}
+
+.slidev-page {
+  background: var(--light);
+  color: var(--dark);
+}
+
+/* ── Typography ──────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6, p, li, strong {
+  color: var(--dark);
+}
+
+h1 { font-size: 3rem !important; line-height: 3rem !important; font-weight: 700; }
+h2 { font-size: 1.5rem; font-weight: 600; }
+
+h1 + h2 {
+  opacity: 0.6 !important;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  margin-top: -0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+h1 + p, h2 + p, h3 + p {
+  opacity: 1 !important;
+  color: inherit !important;
+  font-weight: inherit !important;
+}
+
+a { color: var(--primary); }
+
+ul li::marker { color: var(--primary); }
+
+.slidev-layout ul { list-style-type: disc; }
+.slidev-layout ul ul { list-style-type: circle; }
+
+ul ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Code ────────────────────────────────────────────────────────────────── */
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.slidev-code {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+:not(pre) > code {
+  background: rgba(219, 30, 47, 0.1) !important;
+  color: var(--primary);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+/* All pre blocks: box decoration */
+.slidev-layout pre {
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1em 1.5em !important;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Shiki code blocks: keep a neutral background so the theme's token colors
+   read correctly. Let the shiki theme control its own background. */
+.slidev-layout pre.shiki {
+  background-color: #ebebeb !important;
+}
+
+/* ── Math ────────────────────────────────────────────────────────────────── */
+.katex { font-size: 0.5em !important; }
+.katex-display > .katex { font-size: 0.7em !important; }
+p .katex-display { margin: 1rem 0; }
+
+/* ── Layouts ─────────────────────────────────────────────────────────────── */
+.slidev-layout.cover {
+  background: var(--light) url('/backgrounds/bg.png') no-repeat center center;
+  background-size: cover;
+  text-align: right;
+  padding-left: 50%;
+  padding-right: 4rem;
+}
+
+.slidev-layout.cover h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.slidev-layout.cover h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+.slidev-layout.default h1 {
+  position: absolute !important;
+  top: 1.2rem !important;
+  left: 3rem !important;
+  font-size: 2rem !important;
+  line-height: 2rem !important;
+  margin: 0;
+  z-index: 10;
+  color: var(--primary) !important;
+  max-width: 45%;
+}
+
+.section h1 {
+  color: var(--primary) !important;
+  font-size: 3rem !important;
+  line-height: 3rem !important;
+  font-weight: 900 !important;
+}
+
+.slidev-layout.two-columns {
+  padding-top: 6rem !important;
+  position: relative;
+  z-index: 1;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 5rem !important;
+  align-items: start !important;
+}
+
+.slidev-layout.two-columns .col-right > :first-child {
+  margin-top: -0.5rem !important;
+  padding-top: 0 !important;
+}
+
+.slidev-layout.two-columns h1 {
+  position: absolute !important;
+  top: 1.2rem !important;
+  left: 3rem !important;
+  font-size: 2rem !important;
+  line-height: 2rem !important;
+  margin: 0;
+  z-index: 10;
+  color: var(--primary) !important;
+  max-width: 45%;
+}
+
+.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.grid.grid-cols-2 { gap: 1.5rem; }
+.grid.grid-cols-2 pre { font-size: 0.75rem; line-height: 1.4; }
+
+/* ── TikZ figures ────────────────────────────────────────────────────────── */
+.tikz-figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tikz-figure svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.tikz-error {
+  color: #c0392b;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75em;
+  padding: 0.75em 1em;
+  border: 1px solid #e74c3c;
+  border-radius: 6px;
+  background: #fff5f5;
+}
+
+.tikz-error pre {
+  margin: 0.5em 0 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ── Components ──────────────────────────────────────────────────────────── */
+.annotation-box {
+  background: var(--annotation-red);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .annotation-box { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); }
+
+.highlight {
+  background: var(--annotation-red);
+  color: white;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.arrow-right {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid var(--annotation-red);
+  margin: 0 10px;
+}
+
+.image-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.slidev-layout .abs-br { opacity: 0.8; }
+
+/* ── Array table ─────────────────────────────────────────────────────────── */
+.array-table {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.array-table table {
+  border-collapse: collapse !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 !important;
+}
+
+.array-table th,
+.array-table td {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding: 0 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.array-table th {
+  background-color: #f3f4f6 !important;
+  color: #6b7280 !important;
+  font-weight: normal !important;
+}
+
+.array-table td {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.array-table tr:nth-child(even) { background-color: transparent !important; }
+
+/* ── Final slide ─────────────────────────────────────────────────────────── */
+.final-slide,
+.final-slide * {
+  color: white;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .grid.grid-cols-2 pre { font-size: 0.65rem; }
+}

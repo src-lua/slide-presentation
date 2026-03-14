@@ -1,5 +1,10 @@
 {
-  "devDependencies": {
-    "slidev-addon-tikzjax": "^0.1.0"
+  "name": "slide-presentation-monorepo",
+  "private": true,
+  "scripts": {
+    "dev:seg-tree": "cd presentations/seg-tree && npm run dev",
+    "build:seg-tree": "cd presentations/seg-tree && npm run build",
+    "new-pres": "bash scripts/new-pres.sh",
+    "new-slide": "bash scripts/new-slide.sh"
   }
 }
