@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<LogoBar variant="black" position="header" align="right" />
+
+&nbsp;
+
+# Código
+
+````md magic-move
+```cpp {*}
+NODE query(int no, int l, int r, int a, int b) { // SegLazy
+    if (b < l || r < a) return NODE();
+    if (a <= l && r <= b) return seg[no];
+    push(no, l, r);
+    int m = (l + r) >> 1;
+    return NODE::merge(query(no << 1, l, m, a, b),
+                    query((no << 1) | 1, m + 1, r, a, b));
+}
+
+void update(int l, int r, const TAG& v) { update(1, 0, N - 1, l, r, v); }
+NODE query(int l, int r) { return query(1, 0, N - 1, l, r); }
+```
+
+```cpp {all|2|3|4|5-7|all}
+NODE query(int v, ll l, ll r, ll ql, ll qr) { // Seg Esparsa
+    if (v == -1 || ql > r || qr < l) return NODE();
+    if (ql <= l && r <= qr) return seg[v].node;
+    push(v, l, r);
+    ll mid = l + (r - l) / 2;
+    return NODE::merge(query(seg[v].l, l, mid, ql, qr),
+                        query(seg[v].r, mid + 1, r, ql, qr));
+}
+
+void update(ll ql, ll qr, const TAG& t) { update(0, L, R, ql, qr, t); }
+NODE query(ll ql, ll qr) { return query(0, L, R, ql, qr); }
+```
+````

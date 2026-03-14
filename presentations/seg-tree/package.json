@@ -1,0 +1,20 @@
+{
+  "name": "seg-tree",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open slides.md",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md --with-clicks",
+    "export-pdf": "slidev export slides.md --with-clicks --format pdf",
+    "export-png": "slidev export slides.md --with-clicks --format png"
+  },
+  "dependencies": {
+    "@slidev/theme-default": "^0.25.0",
+    "vue": "^3.5.27"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.11.5",
+    "playwright-chromium": "^1.58.1"
+  }
+}
